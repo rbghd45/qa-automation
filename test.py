@@ -6,7 +6,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 # 크롬 열기
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+options = webdriver.ChromeOptions()
+options.add_argument("--headless")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 # 사이트 접속
 driver.get("https://www.saucedemo.com")
@@ -32,5 +36,6 @@ time.sleep(1)
 # 장바구니 확인
 cart = driver.find_element(By.CLASS_NAME, "shopping_cart_badge")
 print("장바구니 수량:", cart.text)
+
 
 driver.quit()
