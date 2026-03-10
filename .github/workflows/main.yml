@@ -1,0 +1,23 @@
+name: QA Automation Test
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Python 설치
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13'
+
+    - name: Selenium 설치
+      run: pip install selenium webdriver-manager
+
+    - name: 테스트 실행
+      run: python test.py
