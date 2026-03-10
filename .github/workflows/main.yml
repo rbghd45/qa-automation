@@ -16,6 +16,11 @@ jobs:
       with:
         python-version: '3.13'
 
+    - name: 크롬 설치
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+
     - name: Selenium 설치
       run: pip install selenium webdriver-manager
 
